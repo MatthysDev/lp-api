@@ -9,7 +9,7 @@ router.get("/:id", student_Controller.getById);
 
 router.post("/", student_Controller.create);
 
-router.put("/;id", student_Controller.update);
+router.put("/:id", student_Controller.update);
 
 router.delete("/:id", student_Controller.delete);
 
