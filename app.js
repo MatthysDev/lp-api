@@ -1,15 +1,11 @@
 var createError = require("http-errors");
 var express = require("express");
-var cors = require('cors')
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-
-
 var studentRouter = require("./routes/students");
-
-
+var cors = require("cors");
 
 var app = express();
 var mongoose = require("mongoose");
@@ -22,17 +18,16 @@ var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 // view engine setup
 
-app.use(cors())
-
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
+
+app.use(cors());
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
 
 app.use("/students", studentRouter);
 
@@ -51,7 +46,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-
 
 module.exports = app;
