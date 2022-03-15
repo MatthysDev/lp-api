@@ -1,10 +1,14 @@
 var createError = require("http-errors");
 var express = require("express");
+var cors = require('cors')
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+
+
 var studentRouter = require("./routes/students");
+
 
 
 var app = express();
@@ -17,6 +21,9 @@ mongoose.promise = global.Promise;
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 // view engine setup
+
+app.use(cors())
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
