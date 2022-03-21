@@ -10,7 +10,7 @@ var cors = require("cors");
 var app = express();
 var mongoose = require("mongoose");
 var connexionStringLocal =
-  "mongodb+srv://idkbutimlucas:3tAJyb54E89QLfSxKEao@iut.0hmqn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  "mongodb+srv://MatthysDev:8XyCdHInRzbCL8OG@iut.d6umn.mongodb.net/test?authSource=admin&replicaSet=atlas-gx65c2-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
 var mongodb = process.env.MONGO_URI || connexionStringLocal;
 mongoose.connect(mongodb, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.promise = global.Promise;
